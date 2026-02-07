@@ -3,7 +3,7 @@
 A web-based music trivia game using your Plex music library. Listen to clips and guess the song from multiple choice options.
 
 
-![Main_Screen](screenshots/Main.png)
+![Main_Screen](Screenshots/Main.png)
 
 
 ## Features
@@ -15,8 +15,9 @@ A web-based music trivia game using your Plex music library. Listen to clips and
 - 10 rounds per game
 
 
-![Game Screenshot](screenshots/gameplay.png)
+![Game Screenshot](Screenshots/gameplay.png)
 
+![Game Screenshot](Screenshots/gameplay_2.png)
 ## Quick Start
 
 ### Prerequisites

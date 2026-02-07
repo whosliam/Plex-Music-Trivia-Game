@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  plex-music-quiz:
+    build: .
+    container_name: plex-music-quiz
+    ports:
+      - "3000:3000"
+    environment:
+      # REQUIRED: Set your Plex server URL and token
+      - PLEX_URL=http://YOUR_PLEX_SERVER_IP:32400
+      - PLEX_TOKEN=YOUR_PLEX_TOKEN_HERE
+      - PORT=3000
+    volumes:
+      # Persist leaderboard data
+      - ./data:/app/data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "node", "-e", "require('http').get('http://localhost:3000/api/health', (r) => {process.exit(r.statusCode === 200 ? 0 : 1)})"]
+      interval: 30s
+      timeout: 3s
+      retries: 3
+      start_period: 5s

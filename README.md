@@ -110,6 +110,11 @@ sudo ufw allow 3000/tcp
 ports:
   - "8080:3000"  # Use port 8080 instead
 ```
+## Companion Apps
+
+Check out the TV version: [Plex-TV-Trivia-Game](https://github.com/whosliam/Plex-TV-Trivia_game)
+Check out the movie version: [Plex-Music-Trivia-Game](https://github.com/whosliam/Plex-Music-Trivia-Game)
+
 
 ## License
 

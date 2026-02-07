@@ -28,12 +28,10 @@ A web-based music trivia game using your Plex music library. Listen to clips and
 
 ### Get Your Plex Token
 If you have Plex Desktop you can find it in 'C:\Users\[USER]\AppData\Local\Plex\Plex Media Server\Preferences.xml'.
-
+OR
 1. Go to https://app.plex.tv and play any media
 2. Click the menu (⋯) → "Get Info" → "View XML"
 3. Copy the token from the URL: `X-Plex-Token=YOUR_TOKEN`
-
-
 
 More details: https://support.plex.tv/articles/204059436
 

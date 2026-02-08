@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NAME THAT TUNE! - Plex Music Quiz</title>
+    <title>Plex Music Quiz</title>
     <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -464,6 +464,10 @@
 
             const handleSaveScore = async () => {
                 if (playerName.trim()) {
+                    const difficultyMultiplier = difficulty === 'easy' ? 1.0 : difficulty === 'medium' ? 1.5 : 2.0;
+                    const baseScore = (score * 100) - Math.floor(totalGameTime / 10);
+                    const finalScore = Math.floor(baseScore * difficultyMultiplier);
+                    
                     const success = await saveScore(playerName.trim(), score, difficulty, customTimer, totalGameTime);
                     if (success) {
                         setShowNameInput(false);
@@ -647,10 +651,10 @@
                             <div className="text-center animate-slide-up">
                                 <div className="vinyl-disc w-48 h-48 rounded-full mx-auto mb-8 animate-spin-slow"></div>
                                 <h1 className="title-font text-7xl font-bold text-white mb-4 drop-shadow-2xl">
-                                    NAME THAT TUNE!
+                                    GUESS THAT SONG!
                                 </h1>
-                                <p className="text-2xl text-pink-200 mb-2">Plex Music Challenge</p>
-                                <p className="text-lg text-pink-300 mb-12">Powered by your Plex library • {allSongs.length} songs loaded</p>
+                                <p className="text-2xl text-pink-200 mb-2">Family Music Challenge</p>
+                                <p className="text-lg text-pink-300 mb-12">🎵 Powered by your Plex library • {allSongs.length} songs loaded</p>
                                 
                                 <div className="bg-white bg-opacity-10 backdrop-blur-lg rounded-3xl p-8 mb-6 border-4 border-white border-opacity-20">
                                     <h3 className="title-font text-2xl text-white mb-6">Choose Difficulty</h3>
@@ -672,22 +676,7 @@
                                             </button>
                                         ))}
                                     </div>
-                                    
-                                    <div className="border-t border-white border-opacity-20 pt-6">
-                                        <h4 className="text-white text-lg mb-4">Custom Timer: <span className="text-pink-300 font-bold">{customTimer}s</span></h4>
-                                        <input
-                                            type="range"
-                                            min="10"
-                                            max="60"
-                                            value={customTimer}
-                                            onChange={(e) => setCustomTimer(parseInt(e.target.value))}
-                                            className="w-full h-2 bg-white bg-opacity-20 rounded-lg appearance-none cursor-pointer"
-                                        />
-                                        <div className="flex justify-between text-white text-opacity-60 text-sm mt-2">
-                                            <span>10s</span>
-                                            <span>60s</span>
-                                        </div>
-                                    </div>
+
                                 </div>
 
                                 <div className="flex gap-4 justify-center mb-8">
@@ -707,7 +696,7 @@
                                 </div>
 
                                 <div className="text-white text-opacity-70 text-sm">
-                                    <p className="mb-2">🎵 Listen to clips from your library and guess the song! 🎵</p>
+                                    <p className="mb-2">Listen to clips from your library and guess the song!</p>
                                     <p>{totalRounds} rounds • Timer starts when you play • Score points for correct answers</p>
                                 </div>
                             </div>

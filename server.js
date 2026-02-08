@@ -222,7 +222,9 @@ app.post('/api/leaderboard', async (req, res) => {
     
     // Calculate composite score: (correct_answers * 100) - (total_time_in_seconds / 10)
     // This heavily weights correct answers but uses time as a tiebreaker
-    const compositeScore = (score * 100) - Math.floor(totalTime / 10);
+    const difficultyMultiplier = difficulty === 'easy' ? 1.0 : difficulty === 'medium' ? 1.5 : 2.0;
+    const baseScore = (score * 100) - Math.floor(totalTime / 10);
+    const compositeScore = Math.floor(baseScore * difficultyMultiplier);
     
     leaderboard.push({
       name: name.trim().substring(0, 20),
